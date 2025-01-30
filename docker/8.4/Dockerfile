@@ -58,14 +58,14 @@ RUN apt-get update && apt-get upgrade -y \
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.4
 
 RUN userdel -r ubuntu
-ARG WWWGROUP=1000
+#ARG WWWGROUP=1000
 RUN groupadd --force -g $WWWGROUP group_sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
-COPY docker/8.4/start-container /usr/local/bin/start-container
-COPY docker/8.4/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY docker/8.4/php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
-RUN chmod +x /usr/local/bin/start-container
+#COPY docker/8.4/start-container /usr/local/bin/start-container
+#COPY docker/8.4/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+#COPY docker/8.4/php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
+#RUN chmod +x /usr/local/bin/start-container
   
 EXPOSE 80/tcp
 
